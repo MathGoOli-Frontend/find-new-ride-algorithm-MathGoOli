@@ -48,17 +48,21 @@ function findNewRide(driverPositionX, driverPositionY) {
         /*calcula e retorna qual o passageiro mais proximo do motorista */
         let passageiros = mapReader()
         let posicoes = []
+        /* passageiroMaisProximo é uma variavel que é setada como um array. 
+        Armazenará um array com a coodenada e a distancia do passageiro mais proximo.
+        passageiroMaisProximo[0] = coodenadas i, j (ou x, y da matematica) do array
+         passageiroMaisProximo[1] = maior distancia possivel de ser percorrida */
         let passageiroMaisProximo = [[passengerMap.length, passengerMap.length], passengerMap.length * 2]
-        for (let i = 0; i < passageiros.length; i++){
+        for (let i = 0; i < passageiros.length; i++){ // calcula a distancia entre cada passageiro e o motorista
             let distancia = euclidianCalc(passageiros[i][0],passageiros[i][1], driverPositionX, driverPositionY)
             posicoes.push([[passageiros[i][0], passageiros[i][1]], Math.round(distancia*100)/100])
         }
-        for(let i = 0; i < posicoes.length; i++ ){ // compara quem é o passageiro mais proximo
+        for(let i = 0; i < posicoes.length; i++ ){ // compara quem é o passageiro mais proximo e armazena
             if (posicoes[i][1] < passageiroMaisProximo[1]){
                 passageiroMaisProximo = posicoes[i]
             }
         }
-        return [passageiroMaisProximo[0], numeroParaString(passageiroMaisProximo[1])]
+        return [passageiroMaisProximo[0], numeroParaKm(passageiroMaisProximo[1])]
 
 }
 
