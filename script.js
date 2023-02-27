@@ -18,12 +18,28 @@ const passengerMap = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
 ]
-
+function mapReader(){
+    /* lê o mapa e retorna um array com as coordenadas dos passageiros */
+    let passengerList = []
+    for (let i = 0; i < passengerMap.length ; i++){
+        for (let j = 0; j < passengerMap[i].length ; j++){
+            if (passengerMap[i][j] == 1){
+                passengerList.push([i,j])
+            }
+        }
+    }
+    return passengerList
+}
+function euclidianCalc(x1, y1, x2, y2){
+    /* retorna o calculo da hipotenusa entre 2 cordenadas */
+    return Math.sqrt(((x1-x2)**2)+((y1-y2)**2))
+}
 
 function findNewRide(driverPositionX, driverPositionY) {
 
 }
 
+console.log(euclidianCalc(3,6,9,4))
 
 // Tests, do not change, comment/uncomment for use.
 // console.log(findNewRide(0, 0).toString() == [[7, 0], '7.00 km'] ? '\033[32mPASS [0,0]\033' : '\033[31mFAIL [0,0]\033')
