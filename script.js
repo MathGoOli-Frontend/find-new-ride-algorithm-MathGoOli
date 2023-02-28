@@ -45,8 +45,8 @@ function euclidianCalc(x1, y1, x2, y2){
 }
 
 function findNewRide(driverPositionX, driverPositionY) {
-        /*calcula e retorna qual o passageiro mais proximo do motorista */
-        let passenger = mapReader()
+        /* findNewRide calcula e retorna qual o passageiro mais proximo do motorista */
+        let passenger = mapReader() // array 2 por n
         let position = []
         /* nextPassenger é uma variavel que é setada como um array. 
         Armazenará um array com a coodenada e a distance do passageiro mais proximo.
@@ -54,12 +54,14 @@ function findNewRide(driverPositionX, driverPositionY) {
          nextPassenger[1] = maior distance possivel de ser percorrida */
         let nextPassenger = [[passengerMap.length, passengerMap.length], passengerMap.length * 2]
 
-        for (let i = 0; i < passenger.length; i++){ // calcula a distance entre cada passageiro e o motorista
-            let distance = euclidianCalc(passenger[i][0],passenger[i][1], driverPositionX, driverPositionY)
-            position.push([[passenger[i][0], passenger[i][1]], Math.round(distance*100)/100])
+        // calcula a distance entre cada passageiro e o motorista
+        for (let i = 0; i < passenger.length; i++){ 
+            let distance = euclidianCalc(passenger[i][0], passenger[i][1], driverPositionX, driverPositionY)
+            position.push([passenger[i], Math.round(distance*100)/100])
         }
         
-        for(let i = 0; i < position.length; i++ ){ // compara quem é o passageiro mais proximo e armazena
+        // compara quem é o passageiro mais proximo e o armazena na nextPassenger
+        for(let i = 0; i < position.length; i++ ){ 
             if (position[i][1] < nextPassenger[1]){
                 nextPassenger = position[i]
             }
@@ -71,22 +73,22 @@ function findNewRide(driverPositionX, driverPositionY) {
 
 // Tests, do not change, comment/uncomment for use.
 console.log(findNewRide(0, 0).toString() == [[7, 0], '7.00 km'] ? '\033[32mPASS [0,0]\033' : '\033[31mFAIL [0,0]\033')
-// console.log(findNewRide(0, 1).toString() == [[1, 7], '6.08 km'] ? '\033[32mPASS [0,1]\033' : '\033[31mFAIL [0,1]\033')
-// console.log(findNewRide(0, 2).toString() == [[1, 7], '5.10 km'] ? '\033[32mPASS [0,2]\033' : '\033[31mFAIL [0,2]\033')
-// console.log(findNewRide(0, 3).toString() == [[1, 7], '4.12 km'] ? '\033[32mPASS [0,3]\033' : '\033[31mFAIL [0,3]\033')
-// console.log(findNewRide(0, 4).toString() == [[1, 7], '3.16 km'] ? '\033[32mPASS [0,4]\033' : '\033[31mFAIL [0,4]\033')
-// console.log(findNewRide(0, 5).toString() == [[1, 7], '2.24 km'] ? '\033[32mPASS [0,5]\033' : '\033[31mFAIL [0,5]\033')
-// console.log(findNewRide(0, 6).toString() == [[1, 7], '1.41 km'] ? '\033[32mPASS [0,6]\033' : '\033[31mFAIL [0,6]\033')
-// console.log(findNewRide(0, 7).toString() == [[1, 7], '1.00 km'] ? '\033[32mPASS [0,7]\033' : '\033[31mFAIL [0,7]\033')
-// console.log(findNewRide(0, 8).toString() == [[1, 7], '1.41 km'] ? '\033[32mPASS [0,8]\033' : '\033[31mFAIL [0,8]\033')
-// console.log(findNewRide(0, 9).toString() == [[1, 7], '2.24 km'] ? '\033[32mPASS [0,9]\033' : '\033[31mFAIL [0,9]\033')
-// console.log(findNewRide(0, 10).toString() == [[1, 7], '3.16 km'] ? '\033[32mPASS [0,10]\033' : '\033[31mFAIL [0,10]\033')
-// console.log(findNewRide(0, 11).toString() == [[3, 11], '3.00 km'] ? '\033[32mPASS [0,11]\033' : '\033[31mFAIL [0,11]\033')
-// console.log(findNewRide(0, 12).toString() == [[3, 11], '3.16 km'] ? '\033[32mPASS [0,12]\033' : '\033[31mFAIL [0,12]\033')
-// console.log(findNewRide(0, 13).toString() == [[3, 11], '3.61 km'] ? '\033[32mPASS [0,13]\033' : '\033[31mFAIL [0,13]\033')
-// console.log(findNewRide(0, 14).toString() == [[3, 11], '4.24 km'] ? '\033[32mPASS [0,14]\033' : '\033[31mFAIL [0,14]\033')
-// console.log(findNewRide(0, 15).toString() == [[3, 11], '5.00 km'] ? '\033[32mPASS [0,15]\033' : '\033[31mFAIL [0,15]\033')
-// console.log(findNewRide(1, 0).toString() == [[7, 0], '6.00 km'] ? '\033[32mPASS [1,0]\033' : '\033[31mFAIL [1,0]\033')
+console.log(findNewRide(0, 1).toString() == [[1, 7], '6.08 km'] ? '\033[32mPASS [0,1]\033' : '\033[31mFAIL [0,1]\033')
+console.log(findNewRide(0, 2).toString() == [[1, 7], '5.10 km'] ? '\033[32mPASS [0,2]\033' : '\033[31mFAIL [0,2]\033')
+console.log(findNewRide(0, 3).toString() == [[1, 7], '4.12 km'] ? '\033[32mPASS [0,3]\033' : '\033[31mFAIL [0,3]\033')
+console.log(findNewRide(0, 4).toString() == [[1, 7], '3.16 km'] ? '\033[32mPASS [0,4]\033' : '\033[31mFAIL [0,4]\033')
+console.log(findNewRide(0, 5).toString() == [[1, 7], '2.24 km'] ? '\033[32mPASS [0,5]\033' : '\033[31mFAIL [0,5]\033')
+console.log(findNewRide(0, 6).toString() == [[1, 7], '1.41 km'] ? '\033[32mPASS [0,6]\033' : '\033[31mFAIL [0,6]\033')
+console.log(findNewRide(0, 7).toString() == [[1, 7], '1.00 km'] ? '\033[32mPASS [0,7]\033' : '\033[31mFAIL [0,7]\033')
+console.log(findNewRide(0, 8).toString() == [[1, 7], '1.41 km'] ? '\033[32mPASS [0,8]\033' : '\033[31mFAIL [0,8]\033')
+console.log(findNewRide(0, 9).toString() == [[1, 7], '2.24 km'] ? '\033[32mPASS [0,9]\033' : '\033[31mFAIL [0,9]\033')
+console.log(findNewRide(0, 10).toString() == [[1, 7], '3.16 km'] ? '\033[32mPASS [0,10]\033' : '\033[31mFAIL [0,10]\033')
+console.log(findNewRide(0, 11).toString() == [[3, 11], '3.00 km'] ? '\033[32mPASS [0,11]\033' : '\033[31mFAIL [0,11]\033')
+console.log(findNewRide(0, 12).toString() == [[3, 11], '3.16 km'] ? '\033[32mPASS [0,12]\033' : '\033[31mFAIL [0,12]\033')
+console.log(findNewRide(0, 13).toString() == [[3, 11], '3.61 km'] ? '\033[32mPASS [0,13]\033' : '\033[31mFAIL [0,13]\033')
+console.log(findNewRide(0, 14).toString() == [[3, 11], '4.24 km'] ? '\033[32mPASS [0,14]\033' : '\033[31mFAIL [0,14]\033')
+console.log(findNewRide(0, 15).toString() == [[3, 11], '5.00 km'] ? '\033[32mPASS [0,15]\033' : '\033[31mFAIL [0,15]\033')
+console.log(findNewRide(1, 0).toString() == [[7, 0], '6.00 km'] ? '\033[32mPASS [1,0]\033' : '\033[31mFAIL [1,0]\033')
 // console.log(findNewRide(1, 1).toString() == [[1, 7], '6.00 km'] ? '\033[32mPASS [1,1]\033' : '\033[31mFAIL [1,1]\033')
 // console.log(findNewRide(1, 2).toString() == [[1, 7], '5.00 km'] ? '\033[32mPASS [1,2]\033' : '\033[31mFAIL [1,2]\033')
 // console.log(findNewRide(1, 3).toString() == [[1, 7], '4.00 km'] ? '\033[32mPASS [1,3]\033' : '\033[31mFAIL [1,3]\033')
