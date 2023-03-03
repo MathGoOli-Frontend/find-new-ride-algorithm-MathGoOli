@@ -19,14 +19,14 @@ const passengerMap = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
 ]
 
-function numberToKm(n){
+function numberToKm(number){
     /* retorna uma string tipo "10.00 km" */
-    if(n % 1 == 0){
-        return n + ".00 km"
-    }else if(n*10 % 1 == 0){
-        return n + "0 km"
+    if(number % 1 == 0){
+        return number + ".00 km"
+    }else if(number*10 % 1 == 0){
+        return number + "0 km"
     }
-    return n + " km"
+    return number + " km"
 }
 
 function mapReader(){
